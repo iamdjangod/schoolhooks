@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="rtitle">Edit Profile</div><br />
+
+<p>
+<form enctype="multipart/form-data" action="{% url whatsappins.views.save_profile user.pk %}" method="POST">
+    {% csrf_token %}
+    {% if img %} <p><img border="0" alt="Profile Pic" src="{{ img }}" /></p> {% endif %}
+
+    Profile Pic: {{ pf.avatar }}
+    <input type="submit" value="Submit" id="submit" />
+</form>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load avatar_tags %}
+{% load endless %}
+
+
+{% block container %}
+
+<div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="row">
+            {% paginate 21,21 object_list  %}
+              {% for user in object_list %}
+                  <div class="col-xs-6 col-lg-4" style="border: solid 1px none">
+                 <h4><button type="button" class="btn btn-primary">{{ user.first_name }}</button></h4>
+                <img class="img-thumbnail" style="border:solid 1px none;border-radius: 10px" {% avatar user 300 %}
+                <div class="alert alert-info" role="alert">
+                  <h5><em><strong>{{ user.phone }}</strong></em></h5>
+                  <h5><em></strong>{{ user.school }}</strong></em></h5>
+                </div>
+                  </div>
+
+              {% endfor %}
+    </div>
+        {% get_pages %}
+<button type="button" class="btn btn-info">{{ pages.previous }}</button> <button type="button" class="btn btn-info">{{ pages.next }}</button>
+{{ pages.current_start_index }}-{{ pages.current_end_index }} of
+{{ pages.total_count }}.
+{% endblock %}
