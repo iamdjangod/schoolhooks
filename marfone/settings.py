@@ -125,3 +125,8 @@ LOGIN_REDIRECT_URL = '/'
 TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'templates')
 ]
+
+if not os.environ.get("HOME") == 'os.path.join(BASE_DIR)':
+    # Parse database configuration from $DATABASE_URL
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
